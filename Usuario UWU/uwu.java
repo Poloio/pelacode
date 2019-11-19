@@ -8,7 +8,7 @@ class uwu{
 		
 		Scanner myObj = new Scanner(System.in);
 		
-		// Introduccion de Usuario y Contraseña	
+		// Introduccion de Usuario y Contraseña	hehe
 		
 		System.out.println("Mete el uzuario shurra");
 		
