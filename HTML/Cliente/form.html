@@ -7,6 +7,17 @@
 
 <style>
 
+html,
+body,
+div,
+h1,
+p,
+a,
+video {
+  margin: 0;
+  padding: 0;
+}
+
 body {
     font-family: Verdana, Geneva, sans-serif;
 }
@@ -16,11 +27,12 @@ body {
   right: 0;
   bottom: 0;
   min-width: 100%;
-  min-height: 100%;
+  max-width: 100%;
 }
 
 #header {
-    position: relative;;
+    position: relative;
+    bottom: 0;
     background: rgba(0, 0, 0, 0.8);
     width: 100%;
     padding: 20px;
@@ -28,13 +40,17 @@ body {
 }
 
 .content {
-  position: fixed;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  color: #f1f1f1;
-  width: 100%;
-  padding: 20px;
-  margin: 2000px 0px 0px -8px;
+    position: relative;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: #f1f1f1;
+    width: 100%;
+    padding: 20px;
+    margin: 0px 0px 0px 0px;
+}
+
+#relleno {
+    height: 100vh;
 }
 </style>
 
@@ -42,16 +58,17 @@ body {
     <video autoplay muted loop id="fondo">
         <source src="arcade720.mp4" type="video/mp4">
     </video>
-
+    <div id="relleno"></div>
     <div class="content">
         <div id="header">
             <h1>Pelayo Works</h1>
         </div>
-            <h3>¿Quiénes somos?</h3>
+        <h3>¿Quiénes somos?</h3>
         <p>
             Somos un negocio dedicado a la restauración y colocación de máquinas recreativas de las décadas de los 80s-90s. <br>
             Actualmente disponemos de dos arcades NeoGeo, las cuales están funcionando en un par de bares de Huelva. <br><br>
             Damos mucho valor a la fidelidad de hardware y sobre todo, a la negación total a la emulación. <br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras at faucibus neque, a pretium sem. Pellentesque finibus neque vel dui pulvinar, at pharetra libero commodo. Ut id quam non erat lacinia dignissim. In at tellus a arcu lacinia ultricies. Praesent condimentum lectus velit, quis consectetur nisl congue a. Nunc sollicitudin tortor quam, eu laoreet justo luctus in. Nam scelerisque iaculis sem. Nulla at purus et erat posuere dapibus eu nec tortor. Nulla nisl leo, tempus quis placerat a, iaculis ut elit. Cras ultrices dolor a gravida semper.
         </p>
     </div>
 </body>
