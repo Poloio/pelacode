@@ -1,0 +1,25 @@
+body {
+    background-color: #303030;
+    color: whitesmoke;
+}
+
+#logo {
+    display: block;
+    margin: 0 auto;
+}
+
+.contenedor {
+    padding: 3%;
+}
+
+#entrada {
+    text-align: center;
+    background-color: #252525;
+    height: 100%;
+    border-radius: 30px;
+    padding-top: 20px;
+}
+
+.initsesion {
+    padding-top: 20px;
+}
