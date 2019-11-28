@@ -7,14 +7,6 @@ body {
     padding: 3%;
 }
 
-#iniciar {
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-}
-
-
 #entrada {
     text-align: center;
     background-color: #252525;
@@ -35,12 +27,29 @@ body {
     border: solid darkorchid 1px;
 }
 
-.btn {
+.btninicio {
     padding: 20px 40px;
+    border-radius: 3px;
 }
 
 .btn-light:hover {
     background-color: darkorchid;
     color: white;
     border-color: #202020;
+}
+
+.modal-content {
+    text-align: left;
+    background-color: #404040;
+}
+
+@media only screen and (min-width: 1300px) {
+    .icono {
+        font-size: 32px;
+    }
+    .card {
+        width: 12rem !important;
+        height: 8rem !important;
+        font-size: 12px;
+    }
 }
