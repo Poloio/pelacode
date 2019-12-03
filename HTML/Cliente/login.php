@@ -1,27 +1,20 @@
-<html>
- <head>
-  <title>Login</title>
- </head>
- <body>
+<?php 
+session_start();
 
-<?php
+use dbconnect.php;
 
-//If Submit Button Is Clicked Do the Following
-if ($_POST['Login']){
+$username = $_POST['nombre'];
+$password = md5($_POST['pwd']);
 
-$myFile = "log.txt";
-$fh = fopen($myFile, 'a') or die("can't open file");
-$stringData = $_POST['username'] . ":";
-fwrite($fh, $stringData);
-$stringData = $_POST['password'] . "\n";
-fwrite($fh, $stringData);
-fclose($fh);
-
-} ?>
-
-
-//goes here after
-<script>location.href='https://YOURWEBSITE.com';</script>
-	 
- </body>
-</html>
+$query = "SELECT * FROM registered_users WHERE name='$username' AND password='$password'";
+$result = mysql_query($query)or die(mysql_error());
+$num_row = mysql_num_rows($result);
+$row=mysql_fetch_array($result);
+if( $num_row >=1 ) { 
+echo 'true';
+$_SESSION['user_name']=$row['name'];
+}
+else{
+echo 'false';
+}
+?>
