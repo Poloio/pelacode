@@ -1,0 +1,157 @@
+<html>
+
+<head>
+    <title>Inicio</title>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"
+        integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cd n.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/js/bootstrap.min.js"
+        integrity="sha384-3qaqj0lc6sV/qpzrc1N5DC6i1VRn/HyX4qdPaiEFbn54VjQBEU341pvjz7Dv3n6P"
+        crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/bef86badea.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="contenedor vh-100 ">
+
+        <div id="entrada" class="container shadow-lg p-3 mb-5">
+
+            <div id="iniciar" class="container">
+
+                <div class="row py-4">
+                    <div class="col">
+                        <img id="logo" src="logo.png" alt="Logo">
+                    </div>
+                </div>
+
+                <div class="row py-3">
+
+                    <div class="col-2 offset-2">
+                        <div class="card text-white bg-dark mb-3" style="height: 16rem; width: 12rem;">
+                            <div class="card-body">
+                                <h5 class="card-title icono"><i class="fas fa-trophy"></i></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                <p class="card-text align-middle">Publica tus mejores puntuaciones en tus juegos
+                                    favoritos.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-2 offset-1">
+                        <div class="card text-white bg-dark mb-3" style="height: 16rem; width: 12rem;">
+                            <div class="card-body">
+                                <h5 class="card-title icono"><i class="fas fa-search"></i></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                <p class="card-text align-middle">Busca las puntuaciones de otros jugadores para
+                                    marcarte tus propias metas.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-2 offset-1">
+                        <div class="card text-white bg-dark mb-3" style="height: 16rem; width: 12rem;">
+                            <div class="card-body">
+                                <h5 class="card-title icono"><i class="fas fa-fist-raised"></i></h5>
+                                <h6 class="card-subtitle mb-2 text-muted"></h6>
+                                <p class="card-text align-middle">¡Participa en retos únicos y gana premios
+                                    impresionantes!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="row justify-content-center py-4">
+
+                    <div class="colmd-5">
+                        <button type="button" class="btn btn-light btninicio" data-toggle="modal" data-target="#modalScrollable">
+                            Iniciar Sesión
+                        </button>
+                    </div>
+
+                    <div class="modal fade" id="modalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalScrollableTitle">Iniciar sesión</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                            <div class="modal-body">
+                              
+                                <form class="needs-validation" action="index.php" method="post" novalitate>
+                                    <div class="form-group">
+                                      <label for="exampleInputEmail1">Correo electrónico</label>
+                                      <input type="email" name="email" class="form-control" id="emailInput" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Contraseña</label>
+                                        <input type="password" name="password" class="form-control" id="passwordInput" required>
+                                    </div>
+
+                                    <button type="submit" name="login" class="btn btn-light btnform">¡Vamos!</button>
+                                </form>
+
+                                <script>
+                                        // Example starter JavaScript for disabling form submissions if there are invalid fields
+                                        (function() {
+                                        'use strict';
+                                        window.addEventListener('load', function() {
+                                            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                                            var forms = document.getElementsByClassName('needs-validation');
+                                            // Loop over them and prevent submission
+                                            var validation = Array.prototype.filter.call(forms, function(form) {
+                                            form.addEventListener('submit', function(event) {
+                                                if (form.checkValidity() === false) {
+                                                event.preventDefault();
+                                                event.stopPropagation();
+                                                }
+                                                form.classList.add('was-validated');
+                                            }, false);
+                                            });
+                                        }, false);
+                                        })();
+                                </script>
+
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                    <div class="colmd-5 offset-2">
+                        <a href="registro.php">
+	                        <button type="button" class="btn btn-dark btninicio">
+	                            Registrarse
+	                        </button>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
