@@ -75,7 +75,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="g-recaptcha" data-sitekey="6LclCUIUAAAAABx5sLCjoRBXsM-c-K4HpdP4Ma51"></div>
+                    <div class="g-recaptcha" data-sitekey="6LclCUIUAAAAABx5sLCjoRBXsM-c-K4HpdP4Ma51" required></div>
                     <br>
                     <button type="submit" class="btn btn-light btnform">¡Vamos!</button>
                 </form>
