@@ -43,9 +43,27 @@ public class RuletaRusaREVAMPED {
 	
 	//////////////////////////////// Leer y Validar Nombre ///////////////////////////////////////////
 	
-	/*
-	 * Entrada
+	/*	
+	 * Este método valida y guarda el nombre de usuario.
 	 * 
+	 * Entrada:
+	 * 	El nombre del usuario, un String.
+	 * 	La confirmación de si el nombre es correcto, un char.
+	 * 
+	 * Salidas:
+	 * 	El valor de la variable nombre que se usará en el main.
+	 * 
+	 * <inicio>
+	 * 
+	 * 	REPETIR
+	 * 		Preguntar nombre
+	 * 		Leer nombre introducido por teclado
+	 * 		Pedir confirmación al usuario
+	 * 	MIENTRAS la opción de confirmación sea válida Y afirmativa
+	 * 
+	 * 	Devolver nombre
+	 * 		
+	 * <fin>
 	 */
 	
 	public static String pedirNombre(Scanner teclado) {
@@ -79,6 +97,23 @@ public class RuletaRusaREVAMPED {
 	
 	///////////////////////////// Imprimir Tiros Restantes /////////////////////////////
 	
+	/*
+	 * Este método toma la cantidad de disparos que se han hecho e imprime la cantidad
+	 * de disparos restantes en el tambor del arma.
+	 * 
+	 * Entrada:
+	 * 	La cantidad de disparos, un int.
+	 * 
+	 * <inicio>
+	 * 
+	 * 	PARA cada disparo imprimir una bala menos de 6 iniciales
+	 * 		Imprimir una bala
+	 * 	FIN PARA
+	 * 
+	 * <fin>
+	 * 
+	 */
+	 
 	public static void printTambor(int recamara) {
 		
 		System.out.println("\n Disparos restantes:");
@@ -99,10 +134,32 @@ public class RuletaRusaREVAMPED {
 
 	}
 	
-	
-	
 	/////////////////////////////////////// Imprimir tiros al techo //////////////////////////////////////
 	
+	/*
+	 * Este método imprime 2 marcadores vacíos que se llenan con una X
+	 * por cada tiro al techo que se haya producido, marcando el máximo
+	 * de 2 permitido.
+	 * 
+	 * Entradas:
+	 * 	El número de tiros al techo, un int.
+	 * 
+	 * <inicio>
+	 * 
+	 * 	Imprimir presentación del indicador
+	 * 
+	 * 	PARA la cantidad de disparos al techo
+	 * 		Imprimir marcador lleno
+	 * 	FIN PARA
+	 * 
+	 * 	PARA la cantida de disparos restantes
+	 * 		Imprimir marcador vacío
+	 * 	FIN PARA
+	 * 
+	 * <fin>
+	 * 
+	 */
+	 
 	public static void printTecho(int vecesTecho) {
 	
 		System.out.print("\n Disparos al techo restantes:");
@@ -122,6 +179,34 @@ public class RuletaRusaREVAMPED {
 	
 	
 	/////////////////////////////////////// Leer y Validar Opción Menú //////////////////////////////////////
+	
+	/*
+	 * Este método presenta un menú para elegir dónde disparar, pero se salta cuando en la iteración
+	 * anterior se eligió disparar al techo. En ese caso se elige automáticamente yo "Y" como lugar de disparo.
+	 * 
+	 * Entradas:
+	 * 	Lugar de disparo anterior, un char.
+	 * 	Numero de tiros al techo, un int.
+	 * 
+	 * Salidas:
+	 * 	El lugar de disparo elegido en el proceso del menú, que se utiliza en el main.
+	 * 
+	 * <inicio>
+	 * 
+	 * 	<Imprimir tiros al techo>
+	 * 	
+	 * 	SEGÚN el lugar de disparo anterior
+	 * 		caso T
+	 * 			Se imprime un mensaje de recordatorio y se preselecciona Y como nuevo lugar de disparo.
+	 * 		EOTROCASO
+	 * 			Submenú para seleccionar el nuevo lugar de disparo.
+	 * 	FIN SEGÚN
+	 * 
+	 * 	Devolver nuevo lugar de disparo
+	 * 
+	 * <fin>
+	 * 
+	 */
 	
 	public static char menuLugarDisparo(char lugar, int vecesTecho, Scanner teclado) {
 		
@@ -162,6 +247,25 @@ public class RuletaRusaREVAMPED {
 	
 	////////////////////////////////////// Generar Disparo ////////////////////////////////////////
 	
+	/*
+	 * Este método genera si el arma dispara en este click de gatillo con una posiblidad que aumenta
+	 * con la cantidad de veces que se ha apretado el gatillo hasta ahora.
+	 * 
+	 * Entradas: 
+	 * 	El numero de veces que se ha apretado el gatillo, un int.
+	 * 
+	 * Salidas:
+	 * 	Si el arma ha disparado, un booleano.
+	 * 
+	 * <inicio>
+	 * 	
+	 * 	Disparo = verdadero si el número aleatorio de rango 6 generado + número de veces que se ha disparado es >= 5 (Se genera del 0 al 5)
+	 * 
+	 * 	Devolver disparo
+	 * 	
+	 * <fin>
+	 */
+	
 	public static boolean generarDisparo(int recamara) {
 		
 		Random rnd = new Random();
@@ -173,6 +277,33 @@ public class RuletaRusaREVAMPED {
 	}
 	
 	///////////////////////////// Comprobar si ha muerto /////////////////////////////////////////////////
+	
+	/*
+	 * Este método obtiene el lugar de disparo seleccionado y si el arma ha disparado y comprueba si el jugador vive o muere.
+	 * 
+	 * Entradas:
+	 * 	Lugar de disparo, un char.
+	 * 	Si el arma ha disparado, un booleano.
+	 * 
+	 * Salidas:
+	 * 	Si el usuario ha muerto en el intento, un booleano.
+	 * 
+	 * <inicio>
+	 * 
+	 * 	SI disparo es verdadero
+	 * 		SEGUN Lugar de disparo
+	 * 		CASO T
+	 * 			Mensaje de aviso, no se ha muerto.
+	 * 		CASO Y
+	 * 			Mensaje de aviso, el jugador ha muerto.
+	 * 			muerto = Verdadero
+	 * 		FIN SEGUN
+	 * 	SINO
+	 * 		Mensaje de aviso, no se ha muerto.
+	 * 	FIN SI				
+	 * 
+	 * <fin>
+	 */
 	
 	public static boolean comprobarMuerto(char lugar, boolean disparo) {
 		
@@ -201,28 +332,55 @@ public class RuletaRusaREVAMPED {
 		return muerto;
 	}
 		
-		///////////////////////// Leer y validar Reintentar ///////////////////////////
-		public static char pedirReintentar(Scanner teclado) {
-			
-			char opcion;
-			
-			do {//Pedir nombre
-				
-				System.out.print(" Reintentar?:   [S/N]\n"
-				+">> ");
-				
-				opcion = teclado.nextLine().toUpperCase().charAt(0);
-				
-				if (opcion != 'N' && opcion != 'S') {
-				
-					System.out.print("\n Debes introducir una de las opciones.\n"
-					+">> ");
-				}
+	///////////////////////// Leer y validar Reintentar ///////////////////////////
+	
+	/*
+	 * Este método pregunta el usuario si quiere reintentar y devuelve su respuesta.
+	 * 
+	 * Entradas: 
+	 * 	La elección del usuario, un char.
+	 * 
+	 * Salidas:
+	 * 	La elección validada del usuario, un char que se usará en el main
+	 * 
+	 * <inicio>
+	 * 
+	 * 	REPETIR
+	 * 
+	 * 		Imprimir mensaje pidiendo opción
+	 * 		Leer opción introducida por el usuario
+	 * 
+	 * 		SI la opción no es válida
+	 * 			Imprimir mensaje de aviso por error
+	 * 		FIN SI
+	 * 		
+	 * 	MIENTRAS la opción no sea válida
+	 * 
+	 * <fin>
+	 * 
+	 * 
+	 */
+	 
+	public static char pedirReintentar(Scanner teclado) {
 		
-			} while (opcion != 'N' && opcion != 'S');
+		char opcion;	
+		do {//Pedir nombre
 			
-			return opcion;
-		}
+			System.out.print(" Reintentar?:   [S/N]\n"
+			+">> ");
+			
+			opcion = teclado.nextLine().toUpperCase().charAt(0);
+			
+			if (opcion != 'N' && opcion != 'S') {
+			
+				System.out.print("\n Debes introducir una de las opciones.\n"
+				+">> ");
+			}
+	
+		} while (opcion != 'N' && opcion != 'S');
+		
+		return opcion;
+	}
 	
 	////////////////////////////////////////+++  M A I N  +++////////////////////////////////////////////////
 	
