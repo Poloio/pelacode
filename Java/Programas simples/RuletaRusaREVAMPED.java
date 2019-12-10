@@ -452,8 +452,6 @@ public class RuletaRusaREVAMPED {
 				+"\r\n |_|  |_/_/    \\_\\_____/   \\_____/_/    \\_\\_| \\_/_/    \\_\\_____/ \\____/ ");
 			}
 			
-			
-			
 			reintentar = pedirReintentar(teclado);
 			
 		} while(reintentar == 'S');
