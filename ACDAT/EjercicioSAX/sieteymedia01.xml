@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <juego>
-<partida id="1">
-<jugador id="2">
-	<nombre>Arturo</nombre>
-	<jugada>
-	<carta orden="1">
-		<palo>Copas</palo>
-		<numero>3</numero>
-	</carta>
-	<carta orden="2">
-		<palo>Oros</palo>
-		<numero>3</numero>
-	</carta>
-	</jugada>
-</jugador>
-<jugador id="5">
+	<partida id="1">
+		<jugador id="2">
+			<nombre>Arturo</nombre>
+			<jugada>
+				<carta orden="1">
+					<palo>Copas</palo>
+					<numero>3</numero>
+				</carta>
+				<carta orden="2">
+					<palo>Oros</palo>
+					<numero>3</numero>
+				</carta>
+			</jugada>
+		</jugador>
+	<jugador id="5">
 	<nombre>Rafaela</nombre>
 	<jugada>
 	<carta orden="1">
