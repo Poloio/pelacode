@@ -9,7 +9,7 @@ CREATE TABLE DatosRestrictivos (
 	NumSuerte TINYINT NULL,
 	Minutos TINYINT NULL,
 	CONSTRAINT PKDatosRestrictivos PRIMARY KEY (ID),
-	CONSTRAINT CKNoEmpiezaPor CHECK (Nombre NOT LIKE 'N%' AND Nombre NOT LIKE 'X%'),
+	CONSTRAINT CKNoEmpiezaPor CHECK (Nombre NOT LIKE '[NX] %'),
 	CONSTRAINT CKNumeroEnRango CHECK (NumPelos BETWEEN 0 AND 150000),
 	CONSTRAINT CKTiposRopa CHECK (TipoRopa LIKE '[CFEPBN]'),
 	CONSTRAINT CKDivisiblePor3EnRango CHECK (NumSuerte BETWEEN 10 AND 40 AND NumSuerte % 3 = 0),
