@@ -1,4 +1,4 @@
-package ejercicio4;
+package piratagochi;
 import java.util.Random;
 
 public class PiratagochiImp implements Piratagochi {

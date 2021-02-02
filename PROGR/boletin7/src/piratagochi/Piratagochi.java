@@ -1,4 +1,4 @@
-package ejercicio4;
+package piratagochi;
 
 public interface Piratagochi {
 
