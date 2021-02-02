@@ -76,11 +76,11 @@ public class PiratagochiImp implements Piratagochi {
         return isHungry;
     }
 
+
     @Override
     public int getStamina() {
         return stamina;
     }
-
 
     private void addStamina() {
         if (stamina < 10) {
