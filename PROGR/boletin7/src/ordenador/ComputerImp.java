@@ -13,7 +13,7 @@ public class ComputerImp implements Computer {
         this.storage = storage;
         this.memory = memory;
         this.cpu = cpu;
-        this.basePrice = basePrice;
+        this.basePrice =basePrice;
     }
 
     public int getStorageSize() {
