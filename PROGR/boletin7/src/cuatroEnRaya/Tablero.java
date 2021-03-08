@@ -47,7 +47,7 @@ public class Tablero {
         int fila = -1;
 
         for (int i = 0; i < casillas.length; i++) {
-            if (casillas[columna][i] != ' ') {
+            if (casillas[i][columna] != ' ') {
                 fila = i - 1;
                 esLaPrimera = false;
             }
@@ -79,5 +79,6 @@ public class Tablero {
             }
             System.out.print(" |\n");
         }
+        System.out.println();
     }
 }
