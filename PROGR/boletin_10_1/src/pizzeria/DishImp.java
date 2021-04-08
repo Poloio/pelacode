@@ -20,5 +20,7 @@ public class DishImp implements Dish{
         return served;
     }
 
-    public void markAsServed() { served = true; };
+    public void markAsServed() {
+        served = true;
+    }
 }
