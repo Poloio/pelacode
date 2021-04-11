@@ -77,7 +77,7 @@ public class Gestora {
         for (AlumnoImp alumnoAct : alumnos) {
             if (alumnoAct.getId() == idAlumno) {
                 alumno = alumnoAct;
-                break;
+                break; // El IDE me lo recomendó, pero a los profesores no les mola
             }
         }
 

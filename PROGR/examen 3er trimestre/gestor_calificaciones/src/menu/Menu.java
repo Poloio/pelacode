@@ -1,5 +1,6 @@
 package menu;
 
+import clases.AlumnoImp;
 import main.Gestora;
 
 import java.util.Calendar;
@@ -33,12 +34,12 @@ public class Menu {
 
             try {
                 switch (opcion) {
-                    case 1: pedirAlumno(); break;
-                    case 2: pedirExamen(); break;
-                    case 3: pedirIntento(); break;
-                    case 4: estadisticasAlumno(); break;
-                    case 5: estadisticasExamen(); break;
-                    case 6:
+                    case '1': pedirAlumno(); break;
+                    case '2': pedirExamen(); break;
+                    case '3': pedirIntento(); break;
+                    case '4': estadisticasAlumno(); break;
+                    case '5': estadisticasExamen(); break;
+                    case '6':
                         salir = true;
                         System.out.println("Saliendo . . .");
                         break;
@@ -114,12 +115,14 @@ public class Menu {
 
     //Pide los datos del intento y los pasa a la gestora
     private void pedirIntento() throws NoExisteAlumnoOExamenException {
+
         System.out.println("Indica el ID del examen");
         int idExamen = Utilidades.pedirEntero();
 
         if (!gestora.existeExamenConId(idExamen)) {
             throw new NoExisteAlumnoOExamenException("No existe el examen con el ID indicado");
         }
+
 
         System.out.println("Indica el ID del alumno");
         int idAlumno = Utilidades.pedirEntero();
@@ -146,7 +149,7 @@ public class Menu {
     }
 
     private void estadisticasExamen() {
+        System.out.println("En construcción.");
     }
-
 
 }
