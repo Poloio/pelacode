@@ -28,7 +28,7 @@ public class  Gestora {
         boolean lleno = true;
 
         int index = 0;
-        for (int i = 0; i < intentos.length; i++) {
+        for (int i = 0; i < intentos.length && lleno; i++) {
             if (intentos[i] == null) {
                 intentos[i] = newIntento;
                 lleno = false;
