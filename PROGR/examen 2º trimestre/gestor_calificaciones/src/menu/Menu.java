@@ -3,13 +3,17 @@ package menu;
 import clases.AlumnoImp;
 import clases.ExamenImp;
 import clases.IntentoImp;
+<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
+=======
+import enums.Asignatura;
+>>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
 import main.Gestora;
 
 import java.util.Calendar;
 import java.util.Date;
 
-public class Menu {
 
+<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
     public static final String MENU_PRINCIPAL =
             "[1] Dar de alta alumno\n" +
             "[2] Añadir examen\n" +
@@ -18,6 +22,19 @@ public class Menu {
             "[5] Estadísticas de un examen\n" +
             "[6] Salir\n"
             ;
+=======
+public class Menu {
+
+    public static final String MENU_PRINCIPAL =
+            "Bienvenido al gestor de calificaciones, indica una opción\n" +
+            "[1] Dar de alta alumno\n" +
+            "[2] Añadir nuevo examen\n" +
+            "[3] Asignar calificacion\n" +
+            "[4] Mostrar estadísticas de alumno\n" +
+            "[5] Mostrar estadísticas de examen" +
+            "[6] Salir"
+    ;
+>>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
 
     /*
     PRECONDICIONES: ninguna
@@ -25,10 +42,24 @@ public class Menu {
     SALIDAS: caracter opcion, la elegida por el usuario
      */
     public static char menuPrincipal() {
+<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
 
         System.out.println(MENU_PRINCIPAL);
 
         return Utilidades.pedirCadena().charAt(0);
+=======
+        System.out.println(MENU_PRINCIPAL);
+        return Utilidades.pedirCadena().charAt(0);
+    }
+
+    public static int pedirIDAlumno(Gestora gestora) throws NoExisteAlumnoOExamenException {
+        System.out.println("Indica el ID del alumno");
+        int idAlumno = Utilidades.pedirEntero();
+        if (!gestora.existeAlumnoConId(idAlumno)) {
+            throw new NoExisteAlumnoOExamenException("No existe el alumno con el id indicado");
+        }
+        return idAlumno;
+>>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
     }
 
     //Pide los datos del alumno a añair y pasa los datos a la gestora para construirlo
@@ -39,11 +70,14 @@ public class Menu {
 
         Date fecha = pedirFecha();
 
-        //TODO pasar al metodo addAlumno en gestora con estos datos
-
+        return new AlumnoImp(fecha, nombreApellidos);
     }
 
+<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
     public static Date pedirFecha() {
+=======
+    private static Date pedirFecha() {
+>>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
         boolean error = false;
         Date fecha = null;
 
@@ -88,8 +122,62 @@ public class Menu {
 
     //Pide los datos del examen y los pasa a la gestora
     public static ExamenImp pedirExamen() {
+<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
         System.out.println("En construccion");
         //TODO terminar método para recoger datos y pasarlos
+=======
+
+        Asignatura asignatura = pedirAsignatura();
+        Date fecha = pedirFecha();
+        boolean simulacro = preguntarSimulacro();
+
+        return new ExamenImp(asignatura, fecha, simulacro);
+    }
+
+    private static boolean preguntarSimulacro() {
+        boolean isSimulacro = false;
+        boolean error = false;
+        do {
+            if (error) {
+                System.out.println("Introduce una de las opciones");
+            }
+            System.out.println("Es un simulacro de examen? S/N");
+            char opcion = Utilidades.pedirCadena().toUpperCase().charAt(0);
+
+            switch (opcion) {
+                case 'S' -> isSimulacro = true;
+                case 'N' -> isSimulacro = false;
+                default -> error = true;
+            }
+        } while (error);
+
+        return isSimulacro;
+    }
+
+    private static Asignatura pedirAsignatura() {
+        Asignatura asignatura = null;
+        boolean error = false;
+        do {
+            if (error) {
+                System.out.println("Introduce una de las opciones");
+            }
+            System.out.println("Selecciona la asignatura del examen:\n" +
+                    "[1] Programación\n" +
+                    "[2] FOL\n" +
+                    "[3] Lenguajes de marcas\n");
+
+            char opcion = Utilidades.pedirCadena().charAt(0);
+
+            switch (opcion) {
+                case '1' -> asignatura = Asignatura.PROG;
+                case '2' -> asignatura = Asignatura.FOL;
+                case '3' -> asignatura = Asignatura.LM;
+                default -> error = true;
+            }
+        } while (error);
+
+        return asignatura;
+>>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
     }
 
     //Pide los datos del intento y los pasa a la gestora
@@ -114,6 +202,7 @@ public class Menu {
         int calificacion = Utilidades.pedirEnteroConRango(0,10);
 
         return new IntentoImp(idAlumno, idExamen, calificacion);
+<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
     }
 
     public void estadisticasAlumno() throws NoExisteAlumnoOExamenException {
@@ -129,6 +218,9 @@ public class Menu {
 
     private void estadisticasExamen() {
         System.out.println("En construcción.");
+=======
+        //gestora.addIntento(idAlumno, idExamen, calificacion);
+>>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
     }
 
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/.idea/misc.xml
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="15" project-jdk-type="JavaSDK">
+=======
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_16" default="true" project-jdk-name="openjdk-16" project-jdk-type="JavaSDK">
+>>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/.idea/misc.xml
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>
