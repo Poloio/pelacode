@@ -1,70 +1,58 @@
 package menu;
 
+import cinterfaces.Alumno;
 import clases.AlumnoImp;
+import clases.ExamenImp;
+import clases.IntentoImp;
+import enums.Asignatura;
 import main.Gestora;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Menu {
 
-    private Gestora gestora;
-
-    public Menu() {
-        this.gestora = new Gestora();
-    }
+    public static final String MENU_PRINCIPAL =
+            "Bienvenido al gestor de calificaciones, indica una opción\n" +
+            "[1] Dar de alta alumno\n" +
+            "[2] Añadir nuevo examen\n" +
+            "[3] Asignar calificacion\n" +
+            "[4] Mostrar estadísticas de alumno\n" +
+            "[5] Mostrar estadísticas de examen" +
+            "[6] Salir"
+    ;
 
     /*
     PRECONDICIONES: ninguna
     POSTCONDICIOENS: el programa seguirá por el camino que elija el usuario
      */
-    public void menuPrincipal() {
+    public static char menuPrincipal() {
+        System.out.println(MENU_PRINCIPAL);
+        return Utilidades.pedirCadena().charAt(0);
+    }
 
-        boolean salir = false;
-        do {
-            System.out.println("Bienvenido al gestor de calificaciones, indica una opción\n" +
-                    "[1] Dar de alta alumno\n" +
-                    "[2] Añadir nuevo examen\n" +
-                    "[3] Asignar calificacion\n" +
-                    "[4] Mostrar estadísticas de alumno\n" +
-                    "[5] Mostrar estadísticas de examen" +
-                    "[6] Salir");
-
-            char opcion = Utilidades.pedirCadena().charAt(0);
-
-            try {
-                switch (opcion) {
-                    case '1': pedirAlumno(); break;
-                    case '2': pedirExamen(); break;
-                    case '3': pedirIntento(); break;
-                    case '4': estadisticasAlumno(); break;
-                    case '5': estadisticasExamen(); break;
-                    case '6':
-                        salir = true;
-                        System.out.println("Saliendo . . .");
-                        break;
-                    default: System.out.println("Introduce una de las opciones");
-                }
-
-            } catch (NoExisteAlumnoOExamenException e) {
-                e.printStackTrace();
-            }
-        } while (!salir);
+    public static int pedirIDAlumno(Gestora gestora) throws NoExisteAlumnoOExamenException {
+        System.out.println("Indica el ID del alumno");
+        int idAlumno = Utilidades.pedirEntero();
+        if (!gestora.existeAlumnoConId(idAlumno)) {
+            throw new NoExisteAlumnoOExamenException("No existe el alumno con el id indicado");
+        }
+        return idAlumno;
     }
 
     //Pide los datos del alumno a añair y pasa los datos a la gestora para construirlo
-    private void pedirAlumno() {
+    public static AlumnoImp pedirAlumno() {
 
         System.out.println("Introduce el nombre y los apellidos del alumno");
         String nombreApellidos = Utilidades.pedirCadena();
 
         Date fecha = pedirFecha();
 
-        //TODO pasar al metodo addAlumno en gestora con estos datos
-
+        return new AlumnoImp(fecha, nombreApellidos);
     }
 
-    private Date pedirFecha() {
+    private static Date pedirFecha() {
         boolean error = false;
         Date fecha = null;
 
@@ -108,13 +96,62 @@ public class Menu {
     }
 
     //Pide los datos del examen y los pasa a la gestora
-    private void pedirExamen() {
-        System.out.println("En construccion");
-        //TODO terminar método para recoger datos y pasarlos
+    public static ExamenImp pedirExamen() {
+
+        Asignatura asignatura = pedirAsignatura();
+        Date fecha = pedirFecha();
+        boolean simulacro = preguntarSimulacro();
+
+        return new ExamenImp(asignatura, fecha, simulacro);
+    }
+
+    private static boolean preguntarSimulacro() {
+        boolean isSimulacro = false;
+        boolean error = false;
+        do {
+            if (error) {
+                System.out.println("Introduce una de las opciones");
+            }
+            System.out.println("Es un simulacro de examen? S/N");
+            char opcion = Utilidades.pedirCadena().toUpperCase().charAt(0);
+
+            switch (opcion) {
+                case 'S' -> isSimulacro = true;
+                case 'N' -> isSimulacro = false;
+                default -> error = true;
+            }
+        } while (error);
+
+        return isSimulacro;
+    }
+
+    private static Asignatura pedirAsignatura() {
+        Asignatura asignatura = null;
+        boolean error = false;
+        do {
+            if (error) {
+                System.out.println("Introduce una de las opciones");
+            }
+            System.out.println("Selecciona la asignatura del examen:\n" +
+                    "[1] Programación\n" +
+                    "[2] FOL\n" +
+                    "[3] Lenguajes de marcas\n");
+
+            char opcion = Utilidades.pedirCadena().charAt(0);
+
+            switch (opcion) {
+                case '1' -> asignatura = Asignatura.PROG;
+                case '2' -> asignatura = Asignatura.FOL;
+                case '3' -> asignatura = Asignatura.LM;
+                default -> error = true;
+            }
+        } while (error);
+
+        return asignatura;
     }
 
     //Pide los datos del intento y los pasa a la gestora
-    private void pedirIntento() throws NoExisteAlumnoOExamenException {
+    public static IntentoImp pedirIntento(Gestora gestora) throws NoExisteAlumnoOExamenException {
 
         System.out.println("Indica el ID del examen");
         int idExamen = Utilidades.pedirEntero();
@@ -134,22 +171,8 @@ public class Menu {
         System.out.println("Indica la calificación obtenida (0-10)");
         int calificacion = Utilidades.pedirEnteroConRango(0,10);
 
-        gestora.addIntento(idAlumno, idExamen, calificacion);
-    }
-
-    private void estadisticasAlumno() throws NoExisteAlumnoOExamenException {
-        System.out.println("Indica el ID del alumno");
-        int idAlumno = Utilidades.pedirEntero();
-
-        if (!gestora.existeAlumnoConId(idAlumno)) {
-            throw new NoExisteAlumnoOExamenException("No existe el alumno con el id indicado");
-        }
-
-        System.out.println(gestora.getEstadisticasAlumno(idAlumno));
-    }
-
-    private void estadisticasExamen() {
-        System.out.println("En construcción.");
+        return new IntentoImp(idAlumno, idExamen, calificacion);
+        //gestora.addIntento(idAlumno, idExamen, calificacion);
     }
 
 }

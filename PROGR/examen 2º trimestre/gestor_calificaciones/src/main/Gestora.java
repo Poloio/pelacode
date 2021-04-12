@@ -1,32 +1,84 @@
 package main;
 
 
-import clases.*;
+import clases.AlumnoImp;
+import clases.ExamenImp;
+import clases.IntentoImp;
 import enums.Asignatura;
 
-import javax.print.attribute.standard.MediaPrintableArea;
 import java.util.Arrays;
 
 public class  Gestora {
 
-    AlumnoImp[] alumnos;
-    ExamenImp[] examenes;
-    IntentoImp[] intentos;
+    private AlumnoImp[] alumnos;
+    private ExamenImp[] examenes;
+    private IntentoImp[] intentos;
+    public static final int MAX_ALUMNOS = 33;
 
     public Gestora() {
-        alumnos = new AlumnoImp[33];//El máximo de alumnos es 33
+        alumnos = new AlumnoImp[MAX_ALUMNOS];
         examenes = new ExamenImp[10];
         intentos = new IntentoImp[10];
+    }
 
+    /*
+    Añaden un elemento pasado por parámetros al array correspondiente
+     */
+    public void add(IntentoImp  newIntento) {
+        boolean lleno = true;
+
+        int index = 0;
+        for (int i = 0; i < intentos.length; i++) {
+            if (intentos[i] == null) {
+                intentos[i] = newIntento;
+                lleno = false;
+            }
+        }
+
+        if (lleno) {
+            intentos = Arrays.copyOf(intentos, intentos.length+10);
+            add(newIntento);
+        }
+    }
+
+    public void add(AlumnoImp newAlumno) throws MaxAlumnosException {
+        boolean lleno = true;
+        for (int i = 0; i < alumnos.length & lleno; i++) {
+            if (alumnos[i] == null) {
+                alumnos[i] = newAlumno;
+                lleno = false;
+            }
+        }
+
+        if (lleno) {
+            throw new MaxAlumnosException("Se ha alcanzado el máximo de alumnos.");
+        }
+    }
+
+    public void add(ExamenImp newExamen) {
+        boolean lleno = true;
+        for (int i = 0; i < examenes.length && lleno; i++) {
+            if (examenes[i] == null) {
+                examenes[i] = newExamen;
+                lleno = false;
+            }
+        }
+        
+        if (lleno) {
+            examenes = Arrays.copyOf(examenes, examenes.length+10);
+            add(newExamen);
+        }
     }
 
     public boolean existeExamenConId(int idExamen) {
         boolean existe = false;
 
         for (ExamenImp examen : examenes) {
-            if (examen.getId() == idExamen) {
-                existe = true;
-                break;// Lo veo feillo pero el IDE lo recomienda, ya me dices que te parece
+            if (examen != null) {
+                if (examen.getId() == idExamen) {
+                    existe = true;
+                    break;// Lo veo feillo pero el IDE lo recomienda, ya me dices que te parece
+                }
             }
         }
         return existe;
@@ -42,26 +94,6 @@ public class  Gestora {
             }
         }
         return existe;
-    }
-
-    public void addIntento(int idAlumno, int idExamen, int calificacion) {
-
-        IntentoImp newIntento = new IntentoImp(idAlumno,idExamen,calificacion);
-
-        boolean lleno = true;
-        int index = 0;
-        for (IntentoImp intento : intentos) {
-            if (intento == null) {
-                intento = newIntento;
-                lleno = false;
-                break;//Digo lo mismo que en Existe Alumno
-            }
-        }
-
-        if (lleno) {
-            intentos = Arrays.copyOf(intentos, intentos.length+10);
-            addIntento(idAlumno,idExamen,calificacion);
-        }
     }
 
     /*

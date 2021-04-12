@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class ExamenImp implements Examen {
 
-    public static int numExamenes;
+    private static int numExamenes = 0;
 
     private int id;
     private Date fecha;
