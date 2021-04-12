@@ -7,7 +7,7 @@ import enums.Asignatura;
 import javax.print.attribute.standard.MediaPrintableArea;
 import java.util.Arrays;
 
-public class Gestora {
+public class  Gestora {
 
     AlumnoImp[] alumnos;
     ExamenImp[] examenes;
@@ -61,7 +61,7 @@ public class Gestora {
         if (lleno) {
             intentos = Arrays.copyOf(intentos, intentos.length+10);
             addIntento(idAlumno,idExamen,calificacion);
-        }//Toma recursividad jeje
+        }
     }
 
     /*
