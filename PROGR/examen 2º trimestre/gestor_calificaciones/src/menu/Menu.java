@@ -1,6 +1,5 @@
 package menu;
 
-import cinterfaces.Alumno;
 import clases.AlumnoImp;
 import clases.ExamenImp;
 import clases.IntentoImp;
@@ -9,7 +8,7 @@ import main.Gestora;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Locale;
+
 
 public class Menu {
 

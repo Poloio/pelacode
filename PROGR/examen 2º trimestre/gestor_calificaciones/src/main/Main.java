@@ -1,6 +1,5 @@
 package main;
 
-import cinterfaces.Examen;
 import clases.AlumnoImp;
 import clases.ExamenImp;
 import clases.IntentoImp;
@@ -33,15 +32,6 @@ public class Main {
                 default -> System.out.println("Introduce una de las opciones");
             }
         } while (!salir);
-    }
-
-    private static void crearPruebas() {
-        try {
-            GESTORA.add(new AlumnoImp(new Date(), "Paco Toronjo"));
-            GESTORA.add(new ExamenImp(Asignatura.FOL, new Date(), false));
-        } catch (MaxAlumnosException e) {
-            e.printStackTrace();
-        }
     }
 
     private static void nuevoAlumno() {
@@ -79,4 +69,14 @@ public class Main {
     private static void estadisticasExamen() {
         System.out.println("En construcción.");
     }
+
+    private static void crearPruebas() {
+        try {
+            GESTORA.add(new AlumnoImp(new Date(), "Paco Toronjo"));
+            GESTORA.add(new ExamenImp(Asignatura.FOL, new Date(), false));
+        } catch (MaxAlumnosException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
