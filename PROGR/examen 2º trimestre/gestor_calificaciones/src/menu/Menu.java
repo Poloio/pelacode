@@ -3,26 +3,11 @@ package menu;
 import clases.AlumnoImp;
 import clases.ExamenImp;
 import clases.IntentoImp;
-<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
-=======
 import enums.Asignatura;
->>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
 import main.Gestora;
 
 import java.util.Calendar;
 import java.util.Date;
-
-
-<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
-    public static final String MENU_PRINCIPAL =
-            "[1] Dar de alta alumno\n" +
-            "[2] Añadir examen\n" +
-            "[3] Asignar calificación\n" +
-            "[4] Estadísticas de un alumno\n" +
-            "[5] Estadísticas de un examen\n" +
-            "[6] Salir\n"
-            ;
-=======
 public class Menu {
 
     public static final String MENU_PRINCIPAL =
@@ -34,7 +19,6 @@ public class Menu {
             "[5] Mostrar estadísticas de examen" +
             "[6] Salir"
     ;
->>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
 
     /*
     PRECONDICIONES: ninguna
@@ -42,12 +26,6 @@ public class Menu {
     SALIDAS: caracter opcion, la elegida por el usuario
      */
     public static char menuPrincipal() {
-<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
-
-        System.out.println(MENU_PRINCIPAL);
-
-        return Utilidades.pedirCadena().charAt(0);
-=======
         System.out.println(MENU_PRINCIPAL);
         return Utilidades.pedirCadena().charAt(0);
     }
@@ -59,7 +37,6 @@ public class Menu {
             throw new NoExisteAlumnoOExamenException("No existe el alumno con el id indicado");
         }
         return idAlumno;
->>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
     }
 
     //Pide los datos del alumno a añair y pasa los datos a la gestora para construirlo
@@ -73,11 +50,7 @@ public class Menu {
         return new AlumnoImp(fecha, nombreApellidos);
     }
 
-<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
     public static Date pedirFecha() {
-=======
-    private static Date pedirFecha() {
->>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
         boolean error = false;
         Date fecha = null;
 
@@ -122,11 +95,6 @@ public class Menu {
 
     //Pide los datos del examen y los pasa a la gestora
     public static ExamenImp pedirExamen() {
-<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
-        System.out.println("En construccion");
-        //TODO terminar método para recoger datos y pasarlos
-=======
-
         Asignatura asignatura = pedirAsignatura();
         Date fecha = pedirFecha();
         boolean simulacro = preguntarSimulacro();
@@ -177,7 +145,6 @@ public class Menu {
         } while (error);
 
         return asignatura;
->>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
     }
 
     //Pide los datos del intento y los pasa a la gestora
@@ -202,25 +169,10 @@ public class Menu {
         int calificacion = Utilidades.pedirEnteroConRango(0,10);
 
         return new IntentoImp(idAlumno, idExamen, calificacion);
-<<<<<<< HEAD:PROGR/examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java
-    }
-
-    public void estadisticasAlumno() throws NoExisteAlumnoOExamenException {
-        System.out.println("Indica el ID del alumno");
-        int idAlumno = Utilidades.pedirEntero();
-
-        if (!gestora.existeAlumnoConId(idAlumno)) {
-            throw new NoExisteAlumnoOExamenException("No existe el alumno con el id indicado");
-        }
-
-        System.out.println(gestora.getEstadisticasAlumno(idAlumno));
     }
 
     private void estadisticasExamen() {
         System.out.println("En construcción.");
-=======
-        //gestora.addIntento(idAlumno, idExamen, calificacion);
->>>>>>> fe3bb96f8845ed2e106b932e5ed4b803bfc3e226:PROGR/examen 2º trimestre/gestor_calificaciones/src/menu/Menu.java
     }
 
 }

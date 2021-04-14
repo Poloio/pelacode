@@ -27,7 +27,6 @@ public class  Gestora {
     public void add(IntentoImp  newIntento) {
         boolean lleno = true;
 
-        int index = 0;
         for (int i = 0; i < intentos.length && lleno; i++) {
             if (intentos[i] == null) {
                 intentos[i] = newIntento;
@@ -137,11 +136,13 @@ public class  Gestora {
         //Iteramos todos los exámenes buscando en los que haya participado este alumno y sumamos
         //las notas guardando la cantidad para hacer la media
         for (IntentoImp intento : intentos) {
-            ExamenImp examen = getExamenPorId(intento.getIdExamen());
+            if (intento != null) {
+                ExamenImp examen = getExamenPorId(intento.getIdExamen());
 
-            if (examen.getAsignatura() == asignatura) {
-                sumNotas += intento.getCalificacion();
-                cantidad++;
+                if (examen.getAsignatura() == asignatura) {
+                    sumNotas += intento.getCalificacion();
+                    cantidad++;
+                }
             }
         }
         if (cantidad != 0) {
