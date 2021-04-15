@@ -1,0 +1,18 @@
+1. ¿Qué es Map y HashMap en Java? Implementa un ejemplo que lo use
+
+Map es la interfaz del tipo de colección, que consiste en guardar valores y claves (keys) a pares.
+Sustituye a la clase abstracta Dictionary.
+
+HashMap es la implementación de Map que consiste en el uso de una clave (key) y un valor
+(value) para acceder entre ellos. Por ejemplo, con un HashMap<String,Arma> podemos usar
+un String introducido por el usuario para obtener un arma guardada en el programa, sin ser necesariamente
+un atributo de la misma:
+
+- Introduce un arma
++ pistola
+- Has cogido Makarov
+ 
+3. Clases abstractas y jerarquía de Interfaces del paquete java.util
+
+
+4. ¿Qué son los tipos, interfaces, clases y métodos genéricos?. (Apuntes apartado 11.1)
