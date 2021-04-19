@@ -64,3 +64,97 @@ INSERT INTO [dbo].[Order Details]
            ,25
            ,0)
 GO
+
+/*
+Ante la bajada de ventas producida por la crisis, hemos de adaptar nuestros precios según las siguientes reglas:
+	Los productos de la categoría de bebidas (Beverages) que cuesten más de $10 reducen su precio en un dólar.
+	Los productos de la categoría Lácteos que cuesten más de $5 reducen su precio en un 10%.
+	Los productos de los que se hayan vendido menos de 200 unidades en el último año, reducen su precio en un 5%
+*/
+SELECT * FROM Categories
+SELECT * FROM Products
+
+UPDATE Products
+SET UnitPrice = UnitPrice - 1
+WHERE CategoryID = 1 AND UnitPrice > 10
+
+UPDATE Products
+SET UnitPrice = UnitPrice - (UnitPrice / 10)
+WHERE CategoryID = 4 AND UnitPrice > 5
+
+UPDATE Products
+SET UnitPrice = UnitPrice / 20
+WHERE ProductID IN (SELECT OD.ProductID AS Ventas
+					FROM [Order Details] AS OD
+					INNER JOIN Orders AS O
+					ON O.OrderID = OD.OrderID
+					GROUP BY ProductID, O.OrderDate
+					HAVING COUNT(ProductID)	< 200 
+						AND YEAR(O.OrderDate) = MAX(YEAR(O.ORDERDATE))
+					)
+GO
+
+/*
+Inserta un nuevo vendedor llamado Michael Trump. Asígnale los territorios de Louisville, Phoenix, Santa Cruz y Atlanta.
+*/
+
+SELECT * FROM Employees
+
+INSERT INTO [dbo].[Employees]
+           ([LastName]
+           ,[FirstName]
+           ,[Title]
+           ,[TitleOfCourtesy]
+           ,[BirthDate]
+           ,[HireDate]
+           ,[Address]
+           ,[City]
+           ,[Region]
+           ,[PostalCode]
+           ,[Country]
+           ,[HomePhone]
+           ,[Extension]
+           ,[Photo]
+           ,[Notes]
+           ,[ReportsTo]
+           ,[PhotoPath])
+     VALUES
+           ('Trump'
+           ,'Michael'
+           ,'Sales representative'
+           ,'Capo'
+           ,'1948-12-08 00:00:00.000'
+           ,'1992-05-01 00:00:00.000'
+           ,'Avda del Oceano 111 Izq'
+           ,'Punta Umbria'
+           ,'Andalusia'
+           ,'21010'
+           ,'Spain'
+           ,'(206) 555-9857'
+           ,'5467'
+           ,null
+           ,'Education includes a BA in psychology from Colorado State University in 1970.  She also completed "The Art of the Cold Call."  Nancy is a member of Toastmasters International.'
+           ,2
+           ,'http://accweb/emmployees/davolio.bmp')
+
+
+DECLARE @ID int
+SET @ID = @@IDENTITY
+
+SELECT * FROM Territories
+
+INSERT INTO [dbo].[EmployeeTerritories]
+           ([EmployeeID]
+           ,[TerritoryID])
+     VALUES
+           (@ID
+			,(SELECT TerritoryID FROM Territories WHERE TerritoryDescription = 'Louisville'))
+		   ,(@ID
+			,(SELECT TerritoryID FROM Territories WHERE TerritoryDescription = 'Phoenix'))
+		   ,(@ID
+			,(SELECT TerritoryID FROM Territories WHERE TerritoryDescription = 'Santa Cruz'))
+		   ,(@ID
+			,(SELECT TerritoryID FROM Territories WHERE TerritoryDescription = 'Atlanta'))
+GO
+
+
