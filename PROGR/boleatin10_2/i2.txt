@@ -1,0 +1,53 @@
+G eneral
+R esponsibility
+A ssignment 
+S oftware 
+P atterns
+
+**Patrones**
+
+Information Expert / Experto de Información
+
+	Determinar qué información se necesita para llevar una responsabilidad y eleir
+	dónde se guarda.
+
+Creator (Factories) / Creador (Fábricas)
+
+	Legar la responsabilidad de crear objetos a la clase adecuada.
+	A la clase B se debe crear instancias de la clase A si:
+	- La clase B contiene o está compuesta por instancias de A.
+	- La clase B graba en memoria instancias de A.
+	- La clase B usa repetidas veces objetos de A.
+	- La instancias de la clase B contiene información necesaria
+		para instanciar A y la pasa en su creación.
+
+Controller / Controlador
+
+	Los eventos del programa se recogen en una clase controladora que 
+	representa el sistema en sí o sus casos de uso, sin preocuparse de la
+	interfaz de usuario. Los objetos de esta clase reciben estos eventos y los maneja.
+	
+	La controladora de GRASP simplemente controla quién realiza una acción en cada caso,
+	siendo la capa siguiente inmediata a la capa de interfaz de usuario.
+
+	En una aplicación de gestión de un instituto,
+	Controlador se comunica con la IU para saber qué método de la clase Aula usar.
+
+Indirection / Indirección
+
+	Obtener datos de objetos usando otros intermediarios.
+
+Low Coupling / Menos Emparejamiento
+
+	- Menos dependencia entre lo que hacen dos clases
+	- Los cambios afectan menos a su entorno
+	- Promover la reutilización de código.
+
+High cohesion / Alta cohesión (coherente)
+
+	Mantener los objetos en un enfoque correcto, manejables y fáciles de entender.
+	
+Polymorphism / Polimorfismo
+
+	
+	
