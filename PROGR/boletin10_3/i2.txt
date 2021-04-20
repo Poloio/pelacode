@@ -49,5 +49,18 @@ High cohesion / Alta cohesión (coherente)
 	
 Polymorphism / Polimorfismo
 
+	Definir con el mismo nombre distintos caminos para realizar una operación
+	dependiendo del tipo, en lugar de nombrar cambios explícitamente.
+
+Protected variations / Variaciones protegidas
+
+	Proteger elementos de cambios en otros elementos envolviendolos en interfaces y usando el polimorfismo
+	para crear varias implementaciones.
+
+Pure fabrication
+
+	Usar clases que no tienen que ver conceptualmente con el problema principal para
+	promover la reusabilidad y reducir el emparejamiento, usando clases "servicio".
+
 	
 	

@@ -155,6 +155,67 @@ INSERT INTO [dbo].[EmployeeTerritories]
 			,(SELECT TerritoryID FROM Territories WHERE TerritoryDescription = 'Santa Cruz'))
 		   ,(@ID
 			,(SELECT TerritoryID FROM Territories WHERE TerritoryDescription = 'Atlanta'))
+
+
+/*
+Haz que las ventas del año 97 de Robert King que haya hecho a clientes de los estados de California
+y Texas se le asignen al nuevo empleado.
+*/
+SELECT Region FROM Customers WHERE Country = 'USA'
+SELECT * FROM Orders
+
+UPDATE Orders
+SET EmployeeID = @ID
+FROM Orders AS O
+INNER JOIN Employees AS E
+ON E.EmployeeID = O.EmployeeID
+INNER JOIN Customers AS C
+ON C.CustomerID = O.CustomerID
+WHERE 
+	YEAR(OrderDate) = 1997 
+	AND E.FirstName = 'ROBERT' AND E.LastName = 'KING'
+	AND (C.Region = 'CA' OR C.Region = 'TX')
 GO
+
+/*
+Todos los que han comprado "Outback Lager" han comprado cinco años 
+después la misma cantidad de Chang al mismo vendedor
+*/
+DECLARE @output TABLE (idanterior int, idnueva int)
+
+INSERT INTO Orders (CustomerID, EmployeeID, OrderDate,
+	RequiredDate, ShipVia, ShipName, ShipAddress, ShipCity, ShipRegion,
+	ShipPostalCode, ShipCountry)
+
+OUTPUT inserted.OrderID INTO @output
+
+SELECT 
+	O.CustomerID, 
+	O.EmployeeID, 
+	DATEADD(YEAR, 5, O.OrderDate),
+	DATEADD(MONTH, 1, DATEADD(YEAR, 5, O.OrderDate)), 
+	O.ShipVia, 
+	O.ShipName, 
+	O.ShipAddress, 
+	O.ShipCity, 
+	O.ShipRegion,
+	O.ShipPostalCode, 
+	O.ShipCountry
+FROM Orders AS O
+INNER JOIN [Order Details] AS OD
+ON OD.OrderID = O.OrderID
+INNER JOIN Products AS P
+ON P.ProductID = OD.ProductID
+WHERE P.ProductName = 'OUTBACK LAGER'
+
+
+INSERT INTO [dbo].[Order Details]
+           ([OrderID]
+           ,[ProductID]
+           ,[UnitPrice]
+           ,[Quantity]
+           ,[Discount])
+SELECT ID, 1, 0.85, P.UnitPrice
+FROM @output
 
 
