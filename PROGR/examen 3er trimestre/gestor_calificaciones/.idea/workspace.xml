@@ -1,29 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="493285f7-b3fa-4f4a-8907-b3a81dc1d9cf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/menu/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/menu/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/Prueba.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/cinterfaces/Alumno.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/cinterfaces/Examen.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/cinterfaces/Intento.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/clases/AlumnoImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/clases/ExamenImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/clases/IntentoImp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/enums/Asignatura.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/main/Gestora.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/main/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/menu/Menu.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/menu/NoExisteAlumnoOExamenException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/examen 3er trimestre/menu/Utilidades.class" beforeDir="false" />
-    </list>
+    <list default="true" id="493285f7-b3fa-4f4a-8907-b3a81dc1d9cf" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,19 +28,6 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -74,6 +39,7 @@
       <workItem from="1618172375456" duration="1817000" />
       <workItem from="1618174419286" duration="319000" />
       <workItem from="1618174757131" duration="3428000" />
+      <workItem from="1619006066037" duration="19000" />
     </task>
     <servers />
   </component>

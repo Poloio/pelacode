@@ -8,7 +8,7 @@ import enums.Asignatura;
 
 import java.util.Arrays;
 
-public class  Gestora {
+public class   Gestora {
 
     private AlumnoImp[] alumnos;
     private ExamenImp[] examenes;
