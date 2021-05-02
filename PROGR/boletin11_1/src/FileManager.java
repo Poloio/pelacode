@@ -56,9 +56,11 @@ public class FileManager {
     String[] getContentAsList(String path) {
         List<String> outList = new LinkedList<>();
         int palabras = 1; //Necesaria para sacar un array de String del método
+
         try (FileReader target = new FileReader(path)) {
             int i;
             StringBuilder strbuild = new StringBuilder();
+
             //Mientras no se encuentre el fin del archivo
             while ((i = target.read()) != -1) {
                 //SI es un espacio o salto de linea se guarda la palabra;

@@ -1,3 +1,0 @@
-# Lines starting with # will be ignored
-# Syntax [username,email,password]
-# 2021 all rights reserved (?)

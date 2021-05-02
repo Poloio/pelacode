@@ -11,38 +11,16 @@ public class SysManagerImp implements SysManager {
 
     @Override
     public void addUser() {
+        try (ObjectOutputStream oos = new ObjectOutputStream()) {
 
-    }
-
-    @Override
-    public boolean checkPassword(String user, String password) {
-        /*TODO hacer de nuevo la implementación
-        boolean res = false;
-        try (FileReader reader = new FileReader(USER_FILE_PATH)) {
-            int nextChar;
-            String dataList = new;
-
-            while((nextChar = reader.read()) != -1) {
-                String nextUser;
-                StringBuilder nUserBuilder = new StringBuilder();
-                if(nextChar == '[') {
-                    //Loop to read user entry starting at [
-                    while((char)(nextChar = reader.read()) != ']') {
-
-                        if ((char)nextChar != ',') {
-                            nUserBuilder.append((char)nextChar);
-                        } else {
-
-                        }
-                    }
-                }
-            }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return res;
-        */
-        return true;
+    }
+
+    @Override
+    public boolean checkPassword(String userdatum, String s) {
+        return false;
     }
 
     @Override
