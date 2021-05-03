@@ -2,10 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Scanner;
+import java.util.*;
 
 public class FileManager {
 
@@ -53,7 +50,7 @@ public class FileManager {
         return builder.toString();
     }
 
-    String[] getContentAsList(String path) {
+    String[] readFileToList(String path) {
         List<String> outList = new LinkedList<>();
         int palabras = 1; //Necesaria para sacar un array de String del método
 
@@ -78,5 +75,17 @@ public class FileManager {
             e.printStackTrace();
         }
         return outList.toArray(new String[palabras]);
+    }
+
+    List<FileInfo> getContentAsList(String path) {
+        File target = new File(path);
+        List<FileInfo> info = new LinkedList<>();
+
+        for (File fileEntry : Objects.requireNonNull(target.listFiles())) {
+            info.add(new FileInfo(fileEntry));
+        }
+
+        Collections.sort(info);
+        return info;
     }
 }

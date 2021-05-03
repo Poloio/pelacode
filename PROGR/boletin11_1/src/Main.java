@@ -12,9 +12,15 @@ public class Main {
         System.out.println();
         System.out.println(fm.getFileContentFR(file));
 
-        String[] listaA = fm.getContentAsList("./src/files/A.txt");
+        String[] listaA = fm.readFileToList("./src/files/A.txt");
         System.out.println(listaA[3]);
-        String[] listaB = fm.getContentAsList("./src/files/B.txt");
+        String[] listaB = fm.readFileToList("./src/files/B.txt");
         System.out.println(listaB[3]);
+
+        System.out.println();
+        System.out.println("Contenidos de src ordenados alfabeticamente");
+        for (FileInfo info : fm.getContentAsList("./src")) {
+            System.out.println(info.getName());
+        }
     }
 }
