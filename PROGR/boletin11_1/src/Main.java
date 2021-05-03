@@ -1,4 +1,8 @@
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.text.FieldPosition;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,6 +22,26 @@ public class Main {
         System.out.println("Contenidos de src ordenados alfabeticamente");
         for (FileInfo info : fm.getContentAsList("./src")) {
             System.out.println(info.getName());
+        }
+
+        System.out.println("Ex 4_2");
+        writeInputInto("./src/files/entradaPorTeclado.txt");
+    }
+
+    private static void writeInputInto(String filePath) {
+        String input = "";
+        Scanner sc = new Scanner(System.in);
+        try (FileWriter file = new FileWriter(filePath)) {
+
+            while (!input.equals("x")) {
+
+                input = sc.nextLine();
+                if (!input.equals("x")) {
+                    file.write(input + "\n");
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
