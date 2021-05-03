@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Locale;
 
 public class FileInfo implements Comparable<FileInfo> {
 
@@ -55,6 +56,6 @@ public class FileInfo implements Comparable<FileInfo> {
 
     @Override
     public int compareTo(FileInfo o) {
-        return this.name.compareTo(o.getName());
+        return this.name.toLowerCase().compareTo(o.getName().toLowerCase());
     }
 }
