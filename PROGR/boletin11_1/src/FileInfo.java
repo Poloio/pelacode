@@ -24,15 +24,7 @@ public class FileInfo implements Comparable<FileInfo> {
         directory = file.isDirectory();
         lastModified = file.lastModified();
         if (!directory) {
-            /* TODO no puedo conseguir el tamaño sin excepciones
-            try {
-                Path filepath = Paths.get(name);
-                size = Files.size(filepath);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            */
-            size = 0;
+            size = file.length();
         } else {
             size = 0;
         }
