@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9385f769-da13-4e5e-b008-b25cd13bc782" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/examen 3er trimestre.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/gestor_calificaciones.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/cinterfaces/Alumno.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/cinterfaces/Examen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/cinterfaces/Intento.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/clases/AlumnoImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/clases/ExamenImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/clases/IntentoImp.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/enums/Asignatura.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/main/Gestora.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/main/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/menu/Menu.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/menu/NoExisteAlumnoOExamenException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/gestor_calificaciones/src/menu/Utilidades.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/Prueba.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/cinterfaces/Alumno.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/cinterfaces/Examen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/cinterfaces/Intento.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/clases/AlumnoImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/clases/ExamenImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/clases/IntentoImp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/enums/Asignatura.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/main/Gestora.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/main/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/menu/Menu.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/menu/NoExisteAlumnoOExamenException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../examen 3er trimestre/out/production/examen 3er trimestre/menu/Utilidades.class" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1qpkDtUv9Pp9icxsp3Eg9TMk71L" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/gestor_calificaciones" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager" selected="Application.Prueba">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.Main" />
+      <module name="examen 3er trimestre" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Prueba" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Prueba" />
+      <module name="examen 3er trimestre" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Prueba" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9385f769-da13-4e5e-b008-b25cd13bc782" name="Default Changelist" comment="" />
+      <created>1617783803527</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1617783803527</updated>
+      <workItem from="1617783805531" duration="3739000" />
+      <workItem from="1617878765260" duration="22000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
