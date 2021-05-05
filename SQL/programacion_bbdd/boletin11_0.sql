@@ -104,3 +104,30 @@ GO
 SELECT dbo.entradasSalidasEstacion(3,'24-02-2017','28-02-2017') as personas
 GO
 
+/*
+-5-
+Crea una función inline que nos devuelva los kilómetros
+que ha recorrido cada tren en un periodo de tiempo. El principio 
+y el fin de ese periodo se pasarán como parámetros
+*/
+SELECT * FROM LM_Trenes
+SELECT * FROM LM_Itinerarios
+GO
+
+CREATE OR ALTER FUNCTION dbo.kmRecorridos(@IDTren int, @FInicio smalldatetime, @FFin smalldatetime)
+RETURNS INT AS
+BEGIN
+	DECLARE @kmRecorridos int
+	SELECT @kmRecorridos = SUM(distancia) FROM LM_Itinerarios AS I
+	INNER JOIN LM_Lineas AS L
+	ON L.ID = I.Linea
+	INNER JOIN LM_Recorridos AS R
+	ON R.Linea = L.ID AND (R.estacion = I.estacionIni OR R.estacion = I.estacionFin)
+	WHERE R.Tren = @IDTren
+	AND R.Momento BETWEEN @FInicio AND @FFin
+
+	RETURN @kmRecorridos
+END
+GO
+
+SELECT dbo.kmRecorridos(104,'24-02-2017','28-02-2017') AS KILOMETROS
