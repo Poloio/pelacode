@@ -131,3 +131,18 @@ END
 GO
 
 SELECT dbo.kmRecorridos(104,'24-02-2017','28-02-2017') AS KILOMETROS
+GO
+/*
+-7-
+Crea una función inline que nos devuelva el tiempo total que cada usuario ha pasado en el metro en un periodo de tiempo. 
+El principio y el fin de ese periodo se pasarán como parámetros. Se devolverá ID, nombre y apellidos del pasajero. 
+El tiempo se expresará en horas y minutos.
+*/
+CREATE OR ALTER FUNCTION dbo.tiempoTotalEnMetro(@IdUsuario int, @FInicio smalldatetime, @FFin smalldatetime)
+RETURNS TABLE AS
+RETURN
+	SELECT P.ID, P.Nombre, P.Apellidos FROM LM_Pasajeros AS P
+	INNER JOIN LM_Tarjetas AS T
+	ON T.IDPasajero = P.ID
+	INNER JOIN LM_Viajes AS V
+	ON V.IDTarjeta = 
