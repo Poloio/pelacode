@@ -70,10 +70,37 @@ GO
 
 SELECT * FROM LM_Trenes
 SELECT * FROM estacionesRecorridasPorTren('5607GLZ','24-02-2017','28-02-2017')
-
+GO
 /*
 -4-
 Crea una función inline que nos diga el número de personas que han pasado por una estacion en un periodo de tiempo. 
 Se considera que alguien ha pasado por una estación si ha entrado o salido del metro por ella. El principio y el fin 
 de ese periodo se pasarán como parámetros
 */
+
+SELECT * FROM LM_Viajes
+GO
+
+CREATE OR ALTER FUNCTION entradasSalidasEstacion(@Estacion int, @FInicio smalldatetime, @FFin smalldatetime)
+RETURNS int AS
+BEGIN
+	DECLARE @Personas int
+	SELECT @Personas = COUNT(P.ID) FROM LM_Viajes AS V
+	INNER JOIN LM_Tarjetas AS T
+	ON T.ID = V.IDTarjeta
+	INNER JOIN LM_Pasajeros AS P
+	ON P.ID = T.IDPasajero
+
+	WHERE (V.MomentoEntrada BETWEEN @FInicio AND @FFin
+		OR V.MomentoSalida BETWEEN @FInicio AND @FFin)
+		AND 
+		(V.IDEstacionEntrada = @Estacion
+		OR V.IDEstacionSalida = @Estacion)
+
+	RETURN @Personas
+END
+GO
+
+SELECT dbo.entradasSalidasEstacion(3,'24-02-2017','28-02-2017') as personas
+GO
+
