@@ -71,6 +71,7 @@ GO
 SELECT * FROM LM_Trenes
 SELECT * FROM estacionesRecorridasPorTren('5607GLZ','24-02-2017','28-02-2017')
 GO
+ 
 /*
 -4-
 Crea una función inline que nos diga el número de personas que han pasado por una estacion en un periodo de tiempo. 
@@ -110,6 +111,7 @@ Crea una función inline que nos devuelva los kilómetros
 que ha recorrido cada tren en un periodo de tiempo. El principio 
 y el fin de ese periodo se pasarán como parámetros
 */
+
 SELECT * FROM LM_Trenes
 SELECT * FROM LM_Itinerarios
 GO
@@ -132,17 +134,27 @@ GO
 
 SELECT dbo.kmRecorridos(104,'24-02-2017','28-02-2017') AS KILOMETROS
 GO
+
 /*
 -7-
 Crea una función inline que nos devuelva el tiempo total que cada usuario ha pasado en el metro en un periodo de tiempo. 
 El principio y el fin de ese periodo se pasarán como parámetros. Se devolverá ID, nombre y apellidos del pasajero. 
 El tiempo se expresará en horas y minutos.
 */
+
 CREATE OR ALTER FUNCTION dbo.tiempoTotalEnMetro(@IdUsuario int, @FInicio smalldatetime, @FFin smalldatetime)
 RETURNS TABLE AS
 RETURN
-	SELECT P.ID, P.Nombre, P.Apellidos FROM LM_Pasajeros AS P
+	SELECT P.ID, P.Nombre, P.Apellidos, SUM(DATEDIFF(hh, V.MomentoEntrada, V.MomentoSalida)) AS Horas, SUM(DATEDIFF(minute, V.MomentoEntrada, V.MomentoSalida)) AS minutos FROM LM_Pasajeros AS P
 	INNER JOIN LM_Tarjetas AS T
 	ON T.IDPasajero = P.ID
 	INNER JOIN LM_Viajes AS V
-	ON V.IDTarjeta = 
+	ON V.IDTarjeta = T.ID
+	
+	WHERE P.ID = @IdUsuario
+	AND MomentoEntrada BETWEEN @FInicio AND @FFin
+	AND MomentoSalida BETWEEN @FInicio AND @FFin
+	GROUP BY P.ID, P.Nombre, P.Apellidos
+GO
+
+SELECT * from dbo.tiempoTotalEnMetro(4,'2017-02-24','2017-02-28')
