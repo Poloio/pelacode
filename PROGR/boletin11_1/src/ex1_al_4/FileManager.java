@@ -1,3 +1,5 @@
+package ex1_al_4;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
