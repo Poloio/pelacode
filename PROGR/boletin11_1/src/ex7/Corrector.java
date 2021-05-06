@@ -40,6 +40,10 @@ public class Corrector {
                         writer.write(corrected);
                         nextIsMayus = false;
 
+                    } else if  (nextIsMayus && nextChar >= 'A' && nextChar <= 'Z') {
+                        nextIsMayus = false;
+                        writer.write(nextChar);
+
                     } else {
                         writer.write(nextChar);
                     }
