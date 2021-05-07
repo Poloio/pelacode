@@ -9,17 +9,19 @@ CREATE OR ALTER FUNCTION ClasificacionPremio (@NumOrden tinyint)
 RETURNS TABLE AS
 RETURN
 	SELECT P.Dorsal, P.Nombre, COUNT(NULLIF(D.Finalizado,0)) AS CarrerasFinalizadas,
-	COUNT(CASE WHEN D.Posición = 1 THEN 1 ELSE NULL END) AS Ganados,
-	COUNT(CASE WHEN D.Posición >= 1 AND D.Posición <= 3 THEN 1 ELSE NULL END) AS Podios,
-	SUM(CASE
-			WHEN Posición = 1 THEN 20
-			WHEN Posición = 2 THEN 15
-			WHEN Posición = 3 THEN 11
-			WHEN Posición = 4 THEN 8
-			WHEN Posición = 5 THEN 6
-			WHEN Posición = 6 THEN 4
-			WHEN Posición = 7 THEN 3
-			ELSE CASE WHEN Posición = NULL THEN 0 ELSE 1 END
+	COUNT(CASE WHEN D.Posición = 1 THEN 1 ELSE NULL END) 
+		AS Ganados,
+	COUNT(CASE WHEN D.Posición >= 1 AND D.Posición <= 3 THEN 1 ELSE NULL END) 
+		AS Podios,
+	SUM(CASE Posición
+			WHEN 1 THEN 20
+			WHEN 2 THEN 15
+			WHEN 3 THEN 11
+			WHEN 4 THEN 8
+			WHEN 5 THEN 6
+			WHEN 6 THEN 4
+			WHEN 7 THEN 3
+			ELSE CASE Posición WHEN NULL THEN 0 ELSE 1 END
 		END) AS Puntos
 
 	FROM Pilotos AS P
