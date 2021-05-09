@@ -49,7 +49,7 @@ END CATCH
 SELECT * FROM LM_Tarjetas
 GO
 /*
--0-
+-1-
 Crea un procedimiento RecargarTarjeta que reciba como parámetros el ID de una tarjeta y un importe 
 y actualice el saldo de la tarjeta sumándole dicho importe, además de grabar la correspondiente recarga
 */
@@ -145,6 +145,7 @@ BEGIN TRY
 		AND IDTarjeta = @IDTarjeta
 
 	EXEC AplicarCoste @IDTarjeta, @Coste
+
 END TRY
 BEGIN CATCH
 	ROLLBACK
