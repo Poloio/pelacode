@@ -154,3 +154,138 @@ END
 GO
 
 EXEC PasajeroSale 1, 1
+GO
+
+/*
+-3-
+A veces, un pasajero reclama que le hemos cobrado un viaje de forma indebida. 
+Escribe un procedimiento que reciba como parámetro el ID de un pasajero y 
+la fecha y hora de la entrada en el metro y anule ese viaje, actualizando además 
+el saldo de la tarjeta que utilizó.
+*/
+
+CREATE OR ALTER PROCEDURE AnularViaje @IDPasajero int, @MomentoEntrada smalldatetime
+AS
+BEGIN
+	BEGIN TRANSACTION
+	BEGIN TRY
+		DECLARE @IDViaje int
+			,@ImporteADevolver smallmoney
+			,@IDTarjeta int
+		
+		-- Buscamos el viaje que tenemos que anular
+		SELECT @IDViaje = V.ID FROM LM_Viajes AS V
+			INNER JOIN LM_Tarjetas AS T
+			ON T.ID = V.IDTarjeta
+			WHERE T.IDPasajero = @IDPasajero
+			AND MomentoEntrada = @MomentoEntrada
+
+		-- Anulamos el coste
+			-- Primero vemos cuanto cuesta
+		SELECT @ImporteADevolver = Importe_Viaje
+		FROM LM_Viajes
+		WHERE ID = @IDViaje
+
+		UPDATE LM_Viajes
+		SET Importe_Viaje = 0
+		WHERE ID = @IDViaje
+		
+		-- Actualizamos saldo
+		SELECT @IDTarjeta = IDTarjeta FROM LM_Viajes
+		WHERE ID = @IDViaje
+
+		UPDATE LM_Tarjetas
+		SET Saldo -= @ImporteADevolver
+		WHERE ID = @IDTarjeta
+	
+	COMMIT TRANSACTION
+	END TRY
+	BEGIN CATCH
+		ROLLBACK
+	END CATCH
+END
+GO
+
+SELECT * FROM LM_Viajes
+EXEC AnularViaje 3,'24-02-2017 16:50:00'
+GO
+
+/*
+-4-
+La empresa de Metro realiza una campaña de 
+promoción para pasajeros fieles.
+
+Crea un procedimiento almacenado que recargue 
+saldo a los pasajeros que cumplan determinados requisitos.
+Se recargarán N1 euros a los pasajeros que hayan consumido 
+más de 30 euros en el mes anterior (considerar mes completo, del día 1 al fin) 
+y N2 euros a los que hayan utilizado más de 10 veces alguna estación de las zonas 3 o 4.
+
+Los valores de N1 y N2 se pasarán como parámetros. Si se omiten, se tomará el valor 5.
+
+Ambos premios son excluyentes. Si algún pasajero cumple ambas condiciones se le aplicará 
+la que suponga mayor bonificación de las dos.
+*/
+
+CREATE OR ALTER PROCEDURE AplicarPromocion @premioMesAnterior smallmoney, @premioZonas3y4 smallmoney
+AS
+BEGIN
+	DECLARE @PremioMayor bit
+	SET @PremioMayor = 
+		CASE WHEN @premioMesAnterior >= @premioZonas3y4 THEN 0
+			ELSE 1
+		END -- CASE
+
+	DECLARE @Ganadores TABLE (
+		IDTarjeta int PRIMARY KEY
+		,PremioMesAnterior bit
+		,PremioZonas3y4 bit
+		,YaPremiado bit
+	)
+
+	INSERT INTO @Ganadores
+	SELECT IDTarjeta
+		,CASE
+			WHEN SUM(Importe_Viaje) > 30 THEN 1
+			ELSE 0
+		END
+		,CASE 
+			WHEN COUNT(CASE WHEN EE.Zona_Estacion = 3
+									OR EE.Zona_Estacion = 4
+									OR ES.Zona_Estacion = 3
+									OR ES.Zona_Estacion = 4
+							THEN 1
+							ELSE NULL
+						END) > 10 THEN 1
+			ELSE 0
+		END
+		, 0 -- Ninguno está premiado todavía
+
+	FROM LM_Viajes AS V
+	INNER JOIN LM_Estaciones AS EE
+	ON EE.ID = V.IDEstacionEntrada
+	INNER JOIN LM_Estaciones AS ES
+	ON ES.ID = V.IDEstacionSalida
+
+	WHERE MONTH(MomentoEntrada) = MONTH(CURRENT_TIMESTAMP) - 1
+	GROUP BY V.IDTarjeta
+	--End del select monstruoso
+
+	--Hacemos update del saldo
+	UPDATE LM_Tarjetas
+	SET Saldo +=
+	CASE WHEN G.PremioMesAnterior = 1 OR G.PremioZonas3y4 = 1 
+		THEN CASE
+			WHEN @PremioMayor = 0
+				THEN COALESCE(NULLIF(G.PremioMesAnterior,0),NULLIF(G.PremioZonas3y4,0))
+			WHEN @PremioMayor = 1
+				THEN COALESCE(NULLIF(G.PremioZonas3y4,0),NULLIF(G.PremioMesAnterior,0))
+		END
+		ELSE 0
+	END
+	FROM @Ganadores AS G
+	WHERE IDTarjeta = G.IDTarjeta
+END
+GO
+
+EXEC AplicarPromocion 10, 10
