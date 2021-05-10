@@ -289,3 +289,112 @@ END
 GO
 
 EXEC AplicarPromocion 10, 10
+GO
+
+/*
+Crea una función que nos devuelva verdadero si es posible que un pasajero haya subido a un tren en un determinado viaje. 
+Se pasará como parámetro el código del viaje y la matrícula del tren.
+
+Primera aproximación: Se considera que un pasajero ha podido subir a un tren si ese tren se 
+encontraba en serviciodurante el tiempo que el pasajero ha permanecido dentro del sistema de metro
+*/
+
+CREATE OR ALTER FUNCTION EsPosibleElViaje(@IDViaje int, @Matricula char(7))  
+/*
+NOMBRE: EsPosibleViaje
+DESCRIPCION: Devuelve 1 (true) si el tren indicado estaba en servicio en el momento del
+	viaje, y 0 (false) si no
+ENTRADAS: IDViaje, un entero que identifica el viaje a comprobar
+		Matricula, un char(7) que identifica el tren
+SALIDAS: devuelve BIT según si es posible o no el viaje
+*/
+RETURNS bit AS
+BEGIN
+	RETURN CASE
+		WHEN EXISTS (SELECT ID FROM LM_Trenes
+						WHERE Matricula = @Matricula
+							AND FechaEntraServicio <= (SELECT MomentoEntrada FROM LM_Viajes
+														WHERE ID = @IDViaje
+														)
+					)
+			THEN 1
+		ELSE 0
+		END --CASE
+END
+GO
+
+/*
+Crea un procedimiento SustituirTarjeta que Cree una nueva tarjeta y la asigne al mismo 
+usuario y con el mismo saldo que otra tarjeta existente. El código de la tarjeta a sustituir se pasará como parámetro.
+*/
+CREATE OR ALTER PROCEDURE SustituirTarjeta @IDTarjeta int
+/*
+NOMBRE: SUStituirTarjeta
+DESCRIPCION: Crea una nueva tarjeta con el mismo pasajero y saldo que la que se pasa por
+	parámetro y después se elimina
+ENTRADAS: IDTarjeta, un entero que identifica la tarjeta a sustituir
+POSTCONDICION: La tarjeta pasada está eliminada y hay una nueva con los datos en su
+	lugar. 
+*/
+AS
+BEGIN
+	BEGIN TRANSACTION
+	BEGIN TRY
+		INSERT INTO LM_Tarjetas
+		SELECT Saldo, IDPasajero FROM LM_Tarjetas
+		WHERE ID = @IDTarjeta
+
+		DELETE FROM LM_Tarjetas
+		WHERE ID = @IDTarjeta
+	COMMIT TRANSACTION
+	END TRY
+	BEGIN CATCH
+		ROLLBACK
+	END CATCH
+END
+GO
+
+/*
+Las estaciones de la zona 3 tienen ciertas deficiencias, lo que nos ha obligado a introducir una serie de modificaciones 
+en los trenes  para cumplir las medidas de seguridad.
+A consecuencia de estas modificaciones, la capacidad de los trenes se ha visto reducida en 6 plazas para los trenes de 
+tipo 1 y 4 plazas para los trenes de tipo 2.
+Realiza un procedimiento al que se pase un intervalo de tiempo y modifique la capacidad de todos los trenes que 
+hayan circulado más de una vez por alguna estación de la zona 3 en ese intervalo.
+*/
+CREATE OR ALTER PROCEDURE AplicarMedidas @FInicio smalldatetime, @FFin smalldatetime
+/*
+NOMBRE: AlicarMedidas PROCEDIMIENTO
+DESCRIPCION: Comprueba los trenes que han pasado más de una vez
+	por la estación tres en el periodo pasado por parámetros y les reduce
+	la capacidad en 6 si son tipo 1 y 4 si son tipo 2.
+ENTRADAS: FINICIO y FFIN que marcan el periodo a comprobar, ambos smalldatetime.
+*/
+AS 
+BEGIN
+	BEGIN TRANSACTION
+	BEGIN TRY
+		UPDATE LM_Trenes
+		SET Capacidad -= CASE
+							WHEN Tipo = 1 THEN 6
+							WHEN Tipo = 2 THEN 4
+							ELSE 0 --Para ceñirnos al ejercicio
+						END--CASE
+		WHERE (SELECT COUNT(ID) FROM LM_Recorridos AS R
+				INNER JOIN LM_Estaciones AS E
+				ON E.ID = R.estacion
+				WHERE R.Tren = LM_Trenes.ID
+				AND E.Zona_Estacion = 3
+				AND Momento BETWEEN @FInicio AND @FFin
+				) > 1
+	COMMIT TRANSACTION
+	END TRY
+	BEGIN CATCH
+		ROLLBACK
+	END CATCH
+END
+GO
+
+DECLARE @MOMENTO SMALLDATETIME
+SET @MOMENTO = CURRENT_TIMESTAMP
+EXEC AplicarMedidas '2-24-2017', @MOMENTO
