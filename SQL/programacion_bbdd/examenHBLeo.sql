@@ -148,6 +148,7 @@ AS BEGIN
 		SELECT @GastosExtra = dbo.ImporteGastadoEnExtras(@IDUsuario, DATEFROMPARTS(@Anio,@Mes,1), 
 															DATEFROMPARTS(@Anio,@Mes,28))--No es lo correcto porque Febrero y todos
 																						--los meses con 31 fallaría
+		--Insertamos en la tabla recibos
 		INSERT INTO HRecibos (IDSuscripcion, numeroRecibo, inicioPeriodo, finPeriodo,
 								fecha, importeSuscripcion, importeExtras)
 		SELECT @IDUsuario 
