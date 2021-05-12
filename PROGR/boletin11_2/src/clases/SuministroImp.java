@@ -1,6 +1,11 @@
-import java.time.LocalDate;
+package clases;
 
-public class SuministroImp implements Suministro {
+import cinterfaces.Suministro;
+
+import java.time.LocalDate;
+import java.util.Objects;
+
+public class SuministroImp implements Suministro, Comparable<SuministroImp> {
 
     private static Long numeroSuministros;
     private final String codigoBarras;
@@ -38,5 +43,33 @@ public class SuministroImp implements Suministro {
     @Override
     public double getPrecio() {
         return precio;
+    }
+
+    @Override
+    public int compareTo(SuministroImp o) {
+        return codigoBarras.compareTo(o.getCodigoBarras());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof SuministroImp)) return false;
+        SuministroImp that = (SuministroImp) o;
+        return codigoBarras.equals(that.codigoBarras);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(codigoBarras);
+    }
+
+    @Override
+    public String toString() {
+        return "SuministroImp{" +
+                "codigoBarras='" + codigoBarras + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", fechaCaducidad=" + fechaCaducidad +
+                ", precio=" + precio +
+                '}';
     }
 }

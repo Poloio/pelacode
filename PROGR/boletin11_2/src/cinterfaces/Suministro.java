@@ -1,3 +1,5 @@
+package cinterfaces;
+
 import java.time.LocalDate;
 
 public interface Suministro {
