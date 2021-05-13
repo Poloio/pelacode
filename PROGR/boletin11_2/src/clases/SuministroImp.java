@@ -7,22 +7,20 @@ import java.util.Objects;
 
 public class SuministroImp implements Suministro, Comparable<SuministroImp> {
 
-    private static Long numeroSuministros;
+    private static Long numeroSuministros = 0L;
     private final String codigoBarras;
     private final String nombre;
     private final LocalDate fechaCaducidad;
     private final double precio;
+    private final String fabricante;
 
-    public SuministroImp(String nombre, LocalDate fechaCaducidad, double precio) {
+    public SuministroImp(String nombre, LocalDate fechaCaducidad, double precio, String fabricante) {
         numeroSuministros++;
-        StringBuilder codigo = new StringBuilder();
-        codigo.append(numeroSuministros);
-        codigo.append("0".repeat(20 - codigo.toString().length()));
-
-        this.codigoBarras = codigo.toString();
+        this.codigoBarras = String.format("%020d", numeroSuministros);
         this.nombre = nombre;
         this.fechaCaducidad = fechaCaducidad;
         this.precio = precio;
+        this.fabricante = fabricante;
     }
 
     @Override
@@ -46,6 +44,11 @@ public class SuministroImp implements Suministro, Comparable<SuministroImp> {
     }
 
     @Override
+    public String getFabricante() {
+        return this.fabricante;
+    }
+
+    @Override
     public int compareTo(SuministroImp o) {
         return codigoBarras.compareTo(o.getCodigoBarras());
     }
@@ -65,11 +68,11 @@ public class SuministroImp implements Suministro, Comparable<SuministroImp> {
 
     @Override
     public String toString() {
-        return "SuministroImp{" +
-                "codigoBarras='" + codigoBarras + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", fechaCaducidad=" + fechaCaducidad +
-                ", precio=" + precio +
-                '}';
+        return "SuministroImp " +
+                "codigoBarras=" + codigoBarras +
+                ",nombre=" + nombre +
+                ",fechaCaducidad=" + fechaCaducidad +
+                ",precio=" + precio +
+                ",fabricante=" + fabricante;
     }
 }

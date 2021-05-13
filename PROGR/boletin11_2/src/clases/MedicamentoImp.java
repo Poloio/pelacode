@@ -9,8 +9,8 @@ public class MedicamentoImp extends SuministroImp implements Medicamento {
     private final char presentacion;
     private final String principioActivo;
 
-    public MedicamentoImp(String nombre, LocalDate fechaCaducidad, double precio, char presentacion, String principioActivo) {
-        super(nombre, fechaCaducidad, precio);
+    public MedicamentoImp(String nombre, LocalDate fechaCaducidad, double precio, String fabricante, char presentacion, String principioActivo) {
+        super(nombre, fechaCaducidad, precio, fabricante);
         this.presentacion = presentacion;
         this.principioActivo = principioActivo;
     }
@@ -27,13 +27,13 @@ public class MedicamentoImp extends SuministroImp implements Medicamento {
 
     @Override
     public String toString() {
-        return "MedicamentoImp{" +
-                "codigoBarras='" + super.getCodigoBarras() + '\'' +
-                ", nombre='" + super.getNombre() + '\'' +
-                ", fechaCaducidad=" + super.getFechaCaducidad() +
-                ", precio=" + super.getPrecio() +
-                ", presentacion=" + presentacion +
-                ", principioActivo='" + principioActivo + '\'' +
-                '}';
+        return "MedicamentoImp " +
+                "codigoBarras=" + super.getCodigoBarras() +
+                ",nombre=" + super.getNombre() +
+                ",fechaCaducidad=" + super.getFechaCaducidad() +
+                ",precio=" + super.getPrecio() +
+                ",fabricante=" + super.getFabricante() +
+                ",presentacion=" + presentacion +
+                ",principioActivo=" + principioActivo;
     }
 }

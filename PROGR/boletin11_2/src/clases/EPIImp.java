@@ -9,8 +9,8 @@ public class EPIImp extends SuministroImp implements EPI {
     private final char parteCuerpo;
     private final String material;
 
-    public EPIImp(String nombre, LocalDate fechaCaducidad, double precio, char parteCuerpo, String material) {
-        super(nombre, fechaCaducidad, precio);
+    public EPIImp(String nombre, LocalDate fechaCaducidad, double precio, String fabricante, char parteCuerpo, String material) {
+        super(nombre, fechaCaducidad, precio, fabricante);
         this.parteCuerpo = parteCuerpo;
         this.material = material;
     }
@@ -27,13 +27,13 @@ public class EPIImp extends SuministroImp implements EPI {
 
     @Override
     public String toString() {
-        return "EPIImp{" +
-                "codigoBarras='" + super.getCodigoBarras() + '\'' +
-                ", nombre='" + super.getNombre() + '\'' +
-                ", fechaCaducidad=" + super.getFechaCaducidad() +
-                ", precio=" + super.getPrecio() +
-                ", parteCuerpo=" + parteCuerpo +
-                ", material='" + material + '\'' +
-                '}';
+        return "EPIImp " +
+                "codigoBarras=" + super.getCodigoBarras() +
+                ",nombre=" + super.getNombre() +
+                ",fechaCaducidad=" + super.getFechaCaducidad() +
+                ",precio=" + super.getPrecio() +
+                ",fabricante=" + super.getFabricante() +
+                ",parteCuerpo=" + parteCuerpo +
+                ",material=" + material;
     }
 }

@@ -1,0 +1,5 @@
+MedicamentoImp codigoBarras=00000000000000000001,nombre=Spididol,fechaCaducidad=2021-05-13,precio=20.0,fabricante=Pharma,presentacion=C,principioActivo=Ibuprofeno
+MedicamentoImp codigoBarras=00000000000000000002,nombre=Spididol,fechaCaducidad=2021-05-13,precio=20.0,fabricante=Pharma,presentacion=C,principioActivo=Ibuprofeno
+MedicamentoImp codigoBarras=00000000000000000003,nombre=Spididol,fechaCaducidad=2021-05-13,precio=20.0,fabricante=Pharma,presentacion=C,principioActivo=Ibuprofeno
+MedicamentoImp codigoBarras=00000000000000000004,nombre=Spididol,fechaCaducidad=2021-05-13,precio=20.0,fabricante=Pharma,presentacion=C,principioActivo=Ibuprofeno
+MedicamentoImp codigoBarras=00000000000000000005,nombre=Spididol,fechaCaducidad=2021-05-13,precio=20.0,fabricante=Pharma,presentacion=C,principioActivo=Ibuprofeno

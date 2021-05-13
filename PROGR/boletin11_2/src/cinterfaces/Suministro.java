@@ -8,4 +8,5 @@ public interface Suministro {
     String getNombre();
     LocalDate getFechaCaducidad();
     double getPrecio();
+    String getFabricante();
 }
