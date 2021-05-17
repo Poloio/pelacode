@@ -5,19 +5,19 @@ import cinterfaces.FileUtilities;
 import java.io.*;
 import java.util.List;
 
-public abstract class FileUtilitiesImp<T> implements FileUtilities<T> {
+public abstract class FileUtilitiesTxt<T> implements FileUtilities<T> {
 
     private final File file;
     private final String auxPath;
 
 
-    public FileUtilitiesImp(String path, String auxPath) {
+    public FileUtilitiesTxt(String path, String auxPath) {
         assert path != null;
         file = new File(path);
         this.auxPath = auxPath;
     }
 
-    public FileUtilitiesImp(File file, String auxPath) {
+    public FileUtilitiesTxt(File file, String auxPath) {
         this.file = file;
         this.auxPath = auxPath;
     }

@@ -3,9 +3,8 @@ package gestora;
 import clases.SuministroImp;
 
 import java.io.File;
-import java.time.LocalDate;
 
-public class FileSuministros extends FileUtilitiesImp<SuministroImp> {
+public class FileSuministros extends FileUtilitiesTxt<SuministroImp> {
 
     public FileSuministros(String path, String auxPath) {
         super(path, auxPath);
