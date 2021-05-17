@@ -5,6 +5,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 public abstract class FileUtilitiesTxt<T> {
+    /*
+    This class uses a T generic variable to be applied with any data type
+    we need, but at the cost of extra complicated methods that rely on the written syntax more on
+    the data structure itself.
+     */
 
     private File file;
     private String auxPath;

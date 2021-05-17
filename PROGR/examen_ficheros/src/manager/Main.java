@@ -10,6 +10,8 @@ import java.time.LocalDate;
 
 public class Main {
 
+    //Perdón empecé a programar en inglés y no me di cuenta hasta que terminé el modelo
+
     public static final String MASTER = ".\\src\\filemanager\\series.txt";
     public static final String AUX = ".\\src\\filemanager\\seriesAux.txt";
 
@@ -101,6 +103,8 @@ public class Main {
         fs.removeObject("name", name);
     }
 
+    //This method lets the user choose the type of series before bifurcating to one implementation
+    //or another
     private static void addSeries() {
         boolean paid = Menu.askPaid();
         if (paid) {
@@ -114,6 +118,8 @@ public class Main {
         }
     }
 
+    //This method checks if the master files exists, and if it's not,
+    //creates a new one with default
     public static void initFile() {
 
         FileSeries fs = new FileSeries(".\\src\\filemanager\\series.txt",
@@ -126,6 +132,7 @@ public class Main {
         if (!file.exists()) {
             fs.writeObject(new SeriesImp("La masacre de raul", LocalDate.now(), 6d, 24));
             fs.writeObject(new SeriesImp("La masacre de raul 2", LocalDate.now(), 9d, 12));
+
             fps.writeObject(new PaidSeriesImp("La masacre de raul de pago", LocalDate.now(), 10d,
                     6, 400d));
             fps.writeObject(new PaidSeriesImp("Amar es para siempre shalalala", LocalDate.now(), 1d,

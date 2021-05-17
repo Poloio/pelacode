@@ -54,7 +54,6 @@ public class FileSeries extends FileUtilitiesTxt<SeriesImp> {
                 mvp = series;
             }
         }
-
         return mvp;
     }
 }
