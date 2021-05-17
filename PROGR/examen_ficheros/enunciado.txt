@@ -1,0 +1,35 @@
+Nerviónflix
+
+// CREAR CLASE TEST //
+
+SERIE
++ String nombre único get
++ LocalDate fechaEstreno get
++ double(0-10) valoracion get/set default=5
++ int numCapitulos get
++ double indiceRepercusion (?)
+
+SERIE PAGO extends serie
++ double precio get
+
+
+Orden natural: orden nombre alfabetico inverso
+Igualdad: nombre
+toString: todos los atributos
+Indice de repercusión: 
+	(valoracion * 1.5 + valorEsp) * 4
+	valorEsp serie = numCapitulos * 3
+	valorEsp serie de pago = precio * 2
+
+
+GESTORA
+
+- Impresion
+	- Imprimir listado de series en un año (Construccion)
+- Calculo
+	- Total precio de las series de pago
+	- Serie con mayor índice de repercusion
+- Gestión
+	- Añadir serie nueva al archivo
+	- Borrar una serie(Construccion)
+

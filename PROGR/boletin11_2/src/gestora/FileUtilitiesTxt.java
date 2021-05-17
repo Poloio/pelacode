@@ -23,7 +23,7 @@ public abstract class FileUtilitiesTxt<T> implements FileUtilities<T> {
     }
 
     @Override
-    public void addObject(T o) {
+    public void addObject(T  o) {
         try (
                 FileWriter writer = new FileWriter(file, true);
                 BufferedWriter bfWriter = new BufferedWriter(writer)) {
